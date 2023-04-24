@@ -7,12 +7,17 @@ const dataData = require('./data.json')
 const seedDataBase = async () => {
     await sequelize.sync({force: true});
 
-    const data = await Data.bulkCreate(dataData, {
+    
+
+    const users = await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
 
-    const user = await User.bulkCreate(userData)
+    const data = await Data.bulkCreate(dataData, {
+        individualHooks: true,
+        returning: true,
+    });
 
     // for (const { id } of data) {
     //     const newUser = await User.create({
@@ -25,12 +30,12 @@ const seedDataBase = async () => {
     //     returning: true,
     // })
 
-    for (const users of userData) {
-        const newUser = await User.create({
-            ...users,
-            user_id : user.id,
-        });
-    }
+    // for (const user of userData) {
+    //     const newUser = await User.create({
+    //         ...user,
+    //         user_id : 1,
+    //     });
+    // }
 
     process.exit(0);
 };
