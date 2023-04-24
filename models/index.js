@@ -1,5 +1,5 @@
-const User = require('./User')
-const Data = require('./Data')
+const User = require('./User');
+const Data = require('./Data');
 
 User.hasMany(Data, {
     foreignKey: 'user_id',
@@ -8,6 +8,6 @@ User.hasMany(Data, {
 
 Data.belongsTo(User, {
     foreignKey: 'user_id'
-})
+});
 
-module.exports = { User, Data}
+module.exports = { User, Data }
