@@ -12,16 +12,23 @@ const seedDataBase = async () => {
         returning: true,
     });
 
+    const user = await User.bulkCreate(userData)
+
     // for (const { id } of data) {
     //     const newUser = await User.create({
     //         user_id: id,
     //     });
     // }
 
-    for( const user of userData) {
+    // const users = await Data.bulkCreate(userData, {
+    //     individualHooks: true,
+    //     returning: true,
+    // })
+
+    for (const users of userData) {
         const newUser = await User.create({
-            ...user,
-            user_id : data[Math.floor(Math.random() * user.length)].id,
+            ...users,
+            user_id : user.id,
         });
     }
 
