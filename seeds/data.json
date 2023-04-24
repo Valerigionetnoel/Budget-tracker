@@ -1,0 +1,50 @@
+[
+    {
+        "purchase_name": "rent",
+        "cost": "750",
+        "category": "housing",
+        "note": "It cost a lot!",
+        "emotion": "Sad",
+        "user_id": 1
+    },
+    {
+        "purchase_name": "Restaurant",
+        "cost": "25.25",
+        "category": "food",
+        "note": "It was good!",
+        "emotion": "Happy",
+        "user_id": 1
+    },
+    {
+        "purchase_name": "gas",
+        "cost": "75",
+        "category": "car care",
+        "note": "",
+        "emotion": "Angry",
+        "user_id": 1
+    },
+    {
+        "purchase_name": "grocery",
+        "cost": "450",
+        "category": "food",
+        "note": "I love cooking!",
+        "emotion": "Happy",
+        "user_id": 1
+    },
+    {
+        "purchase_name": "assurance",
+        "cost": "220",
+        "category": "car care",
+        "note": "",
+        "emotion": "",
+        "user_id": 1
+    },
+    {
+        "purchase_name": "Play Station 5",
+        "cost": "750",
+        "category": "entertainment",
+        "note": "I like it!",
+        "emotion": "Happy",
+        "user_id": 1
+    }
+]

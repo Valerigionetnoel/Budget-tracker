@@ -13,7 +13,7 @@ User.init(
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primatyKey: true,
+            primaryKey: true,
             autoIncrement: true,
         },
         name: {
@@ -33,10 +33,10 @@ User.init(
             allowNull: false,
             validate: {
                 len: [6],
-                is: ["^[a-z]+$", 'i'],
-                isDecimal: true,
-                isLowercase: true,
-                isUppercase: true,
+                // is: ["^[a-z]+$", 'i'],
+                // isDecimal: true,
+                // isLowercase: true,
+                // isUppercase: true,
             },
         },
     },
