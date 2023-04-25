@@ -6,8 +6,45 @@
   <link href="output.css" rel="stylesheet">
 </head>
 <body>
-  <h1 class=" bg-fuchsia-600 text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <!--Navigation Bar-->
+    <nav class="relative container mx-auto p-6">
+      
+      <div class="flex items-center justify-between">
+
+      <div class="pt-2">
+        <h1>Book Keeping</h1>
+      </div>
+   <!--Logout/Login/user name menu -->
+      <div class="hidden  space-x-6 md:flex">
+        <a href="#">User</a>
+        <a href="#">Login</a>
+        <a href="#">Logout</a>
+      </div>
+
+      </div>
+    </nav>
+   <!--Hero Section-->
+  <section id="hero">
+    <!-- Flex Container -->
+    <div class="container flex flex-col  items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 md:flex-row">
+
+      <!--Left Item-->
+    <div class="flex flex-col mb-32 space-y-12 md:w-1/12">
+      <h1 class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
+        Hello User
+      </h1>
+      <p class="max-w-sm text-center text-red-500">
+        Hello sirs
+      </p>
+    </div>
+
+    <!--Chart JS-->
+    <div class="md:w-1/2">
+      <canvas id="Chart"></canvas>
+    </div>
+
+    </div>
+  </section>
+  <script type="module" src="../Chart.js"></script>
 </body>
 </html>
