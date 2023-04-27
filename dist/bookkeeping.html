@@ -12,9 +12,11 @@
       
         <div class="flex items-center justify-between">
   
-        <div class="pt-2">
-          <h1>Book Keeping</h1>
-        </div>
+        <div class="pt-2 space-x-6 flex">
+            <a>Back to Dashboard</a>
+          </div>
+          
+          <h1 class="text-4xl"> Users Budget Overview</h1>
      <!--Logout/Login/user name menu -->
         <div class="hidden  space-x-6 md:flex">
           <a href="#">User</a>
@@ -27,21 +29,25 @@
      <!--Hero Section-->
     <section id="budgetHero">
       <!-- Flex Container -->
-      <div class="container flex flex-col  items-center px-6 mx-auto mt-10 md:flex-row">
+      <div class="container flex flex-col  items-center mx-auto mt-10 md:flex-row md:justify-between">
   
         <!--Left Item-->
-      <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
-        <h2 class="max-w-md text-xl font-bold text-center md:text-xl">
+      <div class="flex flex-col space-y-12 md:border-b-4 border-black md:w-1/2 md:flex-">
+        <h2 class="max-w-md text-xl font-bold text-center md:text-xl self-center">
           Top Transactions of the Month
         </h2>
-          <canvas id="otherOtherChart"></canvas>
+        <div class="h-64">
+            <canvas id="otherOtherChart"></canvas>
+        </div>
        </div>
         <!--Right Budget Section-->
-    <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
-        <h2 class="max-w-md text-xl font-bold text-center md:text-xl">
+    <div class="flex flex-col space-y-12 md:w-1/2 md:border-l-4 md:border-b-4 border-black">
+        <h2 class="max-w-md text-xl font-bold text-center md:text-xl self-center">
         Amount left in Budget
         </h2>
-        <canvas id="Chart"></canvas>
+        <div class="top-10 w-64 h-64 md:mx-auto">
+            <canvas id="Chart"></canvas>
+        </div>
       </div>
   
       </div>
@@ -49,12 +55,11 @@
     <section id="budgetContent">
 
             <!-- Flex Container -->
-            <div class="container flex flex-col  items-center px-6 mx-auto mt-10 md:flex-row md:justify-center">
+            <div class="container flex flex-col items-center  px-6 mx-auto mt-10 md:mt-0 md:flex-row md:justify-center">
         
-              <!--Left Item-->
-            <div class="flex flex-col mb-36 md:w-1/2">
-              <h2 class="max-w-md text-xl font-bold text-center md:text-xl">
-                Top Transactions of the Month
+            <div class="flex flex-col md:w-1/2">
+              <h2 class="max-w-md text-xl font-bold text-center md:text-xl self-center">
+                Current VS Last Months spending
               </h2>
 
               <canvas id="otherChart"></canvas>  
@@ -77,6 +82,8 @@
           }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: true,
           scales: {
             y: {
               beginAtZero: true
@@ -99,6 +106,8 @@
           }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: true,
           scales: {
             y: {
               beginAtZero: true
@@ -110,17 +119,19 @@
     <script>
         const ctxss = document.getElementById('otherOtherChart');
       
-        new Chart(ctxs, {
-          type: 'line',
+        new Chart(ctxss, {
+          type: 'bar',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Bar', 'Yellow', 'lol', 'fff', 'frog', 'Orange'],
             datasets: [{
               label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: [20, 21, 7, 2, 2, 3],
               borderWidth: 1
             }]
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: true,
             scales: {
               y: {
                 beginAtZero: true
