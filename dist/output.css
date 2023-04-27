@@ -687,6 +687,23 @@ video {
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pl-32 {
+  padding-left: 8rem;
+}
+
+.pt-32 {
+  padding-top: 8rem;
+}
+
+.text-white {
+  --tw-text-opacity:1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
 .self-end {
   align-self: flex-end;
 }
