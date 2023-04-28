@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Data extends Model {}
+class Data extends Model { }
 
 Data.init(
     {
@@ -16,7 +16,7 @@ Data.init(
             allowNull: false,
         },
         cost: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         category: {
@@ -38,10 +38,10 @@ Data.init(
     },
     {
         sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'data',
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'data',
     }
 );
 
