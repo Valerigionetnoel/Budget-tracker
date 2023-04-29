@@ -10,7 +10,12 @@ const newTransactionFormHandler = async (event) => {
     if (company && amount && category && notes && emotion) {
         const response = await fetch(`/api/data`, {
             method: 'POST',
-            body: JSON.stringify ({ company, amount, category, notes, emotion }),
+            body: JSON.stringify ({ purchase_name,
+            cost,
+            category,
+            note,
+            emotion 
+        }),
             headers: {
                 'Content-Type': 'application/json'
             }
