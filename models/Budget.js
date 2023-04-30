@@ -7,16 +7,15 @@ Budget.init(
     {
         month: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
         income: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        expenses: {
-            type: DataTypes.FLOAT,
-            allowNull: false,
-        },
+        //expenses: {
+            //type: DataTypes.FLOAT,
+            //allowNull: false,
+        //},
         savings: {
             type: DataTypes.FLOAT,
             allowNull: false,
