@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
   try {
     res.render('dashboard');
   } catch (err) {
