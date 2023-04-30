@@ -3,10 +3,17 @@ const { Data } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-router.get('/', async (req, res) => {
+
+router.get('/', withAuth, async (req, res) => {
   try {
-    const userInputData = await Data.findAll();
-    res.status(200).json(userInputData);
+    const inputData = await Data.findAll({
+      where: {
+        user_id: req.session.user_id, // Only fetch data for the logged-in user
+      },
+      raw: true, // Return plain objects instead of Sequelize model instances
+    });
+
+    res.render('homepage', { inputData });
   } catch (err) {
     res.status(400).json(err);
   }  

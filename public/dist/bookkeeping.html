@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="output.css" rel="stylesheet">
+  <!-- <link href="output.css" rel="stylesheet"> -->
 </head>
 <body>
 
@@ -67,78 +67,5 @@
 
     </section>
     <script type="module" src="../Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      const ctx = document.getElementById('Chart');
-    
-      new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-          }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    </script>
-    <script>
-      const ctxs = document.getElementById('otherChart');
-    
-      new Chart(ctxs, {
-        type: 'bar',
-        data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-          }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    </script>
-    <script>
-        const ctxss = document.getElementById('otherOtherChart');
-      
-        new Chart(ctxss, {
-          type: 'bar',
-          data: {
-            labels: ['Bar', 'Yellow', 'lol', 'fff', 'frog', 'Orange'],
-            datasets: [{
-              label: '# of Votes',
-              data: [20, 21, 7, 2, 2, 3],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
   </body>
   </html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <!--Navigation Bar-->
+    <nav class="relative container mx-auto p-6">
+      
+      <div class="flex items-center justify-between">
+
+      <div class="pt-2">
+        <h1>Book Keeping</h1>
+      </div>
+   <!--Logout/Login/user name menu -->
+      <div class="hidden  space-x-6 md:flex">
+    <!-- Render the user -->
+    {{#if loggedIn}}
+        <p>{{userData.name}} </p>
+        <button id="logout">Logout</button> 
+         <button data-modal-target="budgetCreationModal" data-modal-toggle="budgetCreationModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+          Create a Budget!
+        </button>
+        {{/if}}
+      </div>
+    </div>
+    </nav>
+    {{{body}}}
+    <script src="./flowbite.min.js"></script>
+    <script src="../public/js/login.js"></script>
+    </body>
+</html>
