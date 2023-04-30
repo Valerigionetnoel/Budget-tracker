@@ -3,6 +3,7 @@ const { Data } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
+
 router.get('/', withAuth, async (req, res) => {
   try {
     const inputData = await Data.findAll({
@@ -12,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
       raw: true, // Return plain objects instead of Sequelize model instances
     });
 
-    res.render('homepage', { data: transactionData });
+    res.render('homepage', { inputData });
   } catch (err) {
     res.status(400).json(err);
   }  

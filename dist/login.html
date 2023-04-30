@@ -7,53 +7,71 @@
     <title>Login Page</title>
 </head>
 <body>
-    
-    <div class="flex flex-row"><!--Content Wrapper-->
-        <div class="objext-none object-left mx-auto pl-32 pt-32"><!--Left Box-->
-            <div class="box-border bg-gray-500 text-center text-white">
-                <h1 class="p-6 pb-2">
-                    Already have an account? Login here!
-                </h1>
-                <h3 class="p-6 pb-2">
-                    Username
-                </h3>
-                <input type="text" id="Username" class="p-6 pt-2"/>
-                <h3 class="p-6 pb-2">
-                    Password
-                </h3>
-                <input type="text" id="Password" class="p-6"/>
-                <br>
-                <input type="submit" value="Log in" id="logIn" class="p-6"/>
+    <nav class="relative container mx-auto p-6">
+      
+        <div class="flex items-center justify-between">
+          
+            <h1> Budget Login Page</h1>
+     <!--Logout/Login/user name menu -->
+  
+        </div>
+
+        </nav>
+
+        <section id="loginSquares">
+            <!--Already have an account?-->
+    <div class="container flex flex-col items-center rounded-lg mx-auto mt-10 md:flex-row md:justify-between">
+        <div class="flex flex-col space-y-12 bg-gray-500 md:w-1/2">
+            <h2> Already have an Account?</h2>
+            <div class="p-6 space-y-6">
+                <div id="loginEmail">
+                  <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                  <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <div id="loginPassword">
+                  <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                  <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="flex items-center p-6 space-x-2 dark:border-gray-600">
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+                </div>
             </div>
         </div>
-        <div class="objext-none object-right mx-auto pl-32 pt-32"><!--Right Box-->
-            <div class="box-border bg-gray-500 text-center text-white">
-                <h1 class="p-6 pb-2">
-                    New user?
-                </h1>
-                <h2 class="p-6 pt-2">
-                    Create an account!
-                </h2>
-                <h3 class="p-6 pb-2">
-                    Email
-                </h3>
-                <input type="text" id="createEmail" class="p-6 pt-2"/>
-                <h3 class="p-6 pb-2">
-                    Username
-                </h3>
-                <input type="text" id="createUsername" class="p-6 pt-2"/>
-                <h3 class="p-6 pb-2">
-                    Password (must be 8 characters, include a number and special character)
-                </h3>
-                <input type="text" id="createPassword" class="p-6 pt-2"/>
-                <h3 class="p-6 pb-2">
-                    Confirm Password
-                </h3>
-                <input type="text" id="checkPassword" class="p-6 pt-2"/>
-                <br>
-                <input type="submit" value="Create Account" id="createAccount" class="p-6 pt-2"/>
+
+        <!--Create an Account-->
+    <div class="flex flex-col md:space-y-12 bg-gray-400 md:w-1/2 md:border-b-4">
+        <h2> Create an Account! </h2>
+        <div class="p-6 md:space-y-6">
+            <div id="newAccountEmail">
+              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+              <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
+        </div>
+
+        <div class="p-6 md:space-y-6">
+            <div id="newAccountPassword">
+              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+              <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+</div>
+            <div class="p-6 md:space-y-6">
+                <div id="confrimNewAccountPassword">
+                  <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                  <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+
+            <div class="flex items-center p-6 space-x-2 dark:border-gray-600">
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
+            </div>
+        </div>
+    
+        
         </div>
     </div>
+        </section>
+        <script src="./flowbite.min.js"></script>
 </body>
 </html>
