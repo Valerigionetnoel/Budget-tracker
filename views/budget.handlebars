@@ -1,32 +1,4 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../dist/output.css" rel="stylesheet">
-</head>
-<body>
-
-    <!--Navigation Bar-->
-    <nav class="relative container mx-auto p-6">
-      
-        <div class="flex items-center justify-between">
-  
-        <div class="pt-2 space-x-6 flex">
-            <a>Back to Dashboard</a>
-          </div>
-          
-          <h1 class="text-4xl"> Users Budget Overview</h1>
-     <!--Logout/Login/user name menu -->
-         {{#if loggedIn}}
-        <p>{{userData.name}} </p>
-        {{/if}}
-        <button>Logout</button> 
-      </div>
-  
-        </div>
-      </nav>
-     <!--Hero Section-->
+  <!--Hero Section-->
     <section id="budgetHero">
       <!-- Flex Container -->
       <div class="container flex flex-col  items-center mx-auto mt-10 md:flex-row md:justify-between">
