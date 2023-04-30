@@ -8,26 +8,25 @@ const newTransactionFormHandler = async (event) => {
     const emotion = document.querySelector('#emotionalPurchase').value.trim();
 
     if (company && amount && category && notes && emotion) {
-        const response = await fetch(`/api/data`, {
-            method: 'POST',
-            body: JSON.stringify ({ purchase_name,
-            cost,
-            category,
-            note,
-            emotion 
+      const response = await fetch(`/api/data`, {
+        method: 'POST',
+        body: JSON.stringify ({ purchase_name,
+          cost,
+          category,
+          note,
+          emotion 
         }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        },
-)};
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
         if (response.ok) {
             document.location.replace('/data')
         } else {
             alert('Failed to create project');
           }
-};    
+}};    
 
 const delTransaction= async (event) => {
     if (event.target.hasAttribute('data_id')) {
