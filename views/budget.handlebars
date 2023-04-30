@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="output.css" rel="stylesheet">
+  <link href="../dist/output.css" rel="stylesheet">
 </head>
 <body>
 
@@ -18,11 +18,11 @@
           
           <h1 class="text-4xl"> Users Budget Overview</h1>
      <!--Logout/Login/user name menu -->
-        <div class="hidden  space-x-6 md:flex">
-          <a href="#">User</a>
-          <a href="#">Login</a>
-          <a href="#">Logout</a>
-        </div>
+         {{#if loggedIn}}
+        <p>{{userData.name}} </p>
+        {{/if}}
+        <button>Logout</button> 
+      </div>
   
         </div>
       </nav>

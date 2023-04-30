@@ -1,7 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Data extends Model { }
+// by extending the modal we are able to call the sum function to sum up the cost of each category
+// this allows us to create a chart.js 
+class Data extends Model { static async sumByCategory(category) {
+    const results = await this.findAll({
+      where: { category },
+      attributes: [[sequelize.fn('SUM', sequelize.col('cost')), 'total']],
+    });
+    return results[0].dataValues.total;
+  }}
 
 Data.init(
     {

@@ -17,7 +17,9 @@
    <!--Logout/Login/user name menu -->
       <div class="hidden  space-x-6 md:flex">
     <!-- Render the user -->
+    {{#if loggedIn}}
         <p>{{userData.name}} </p>
+        {{/if}}
         <p>Logout</p> 
       </div>
 
@@ -35,7 +37,7 @@
       </h2>
         <div class="top-10 w-80 lg:mx-auto self-center">
             <!-- add rendering for the chart-->
-          <canvas id="Chart"></canvas>
+          <canvas id="myTransactionChart"></canvas>
         </div>
      </div>
 
@@ -185,7 +187,7 @@
         </div>
     </div>
 </div>
-  <script type="module" src="../Chart.js"></script>
+  <script type="module" src="../charts/auto/topSpendingChart.js"></script>
   <script src='../public/js/modal.js'></script>
   <script src="./flowbite.min.js"></script>
 </body>
