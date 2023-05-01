@@ -1,26 +1,39 @@
-const Data = require('../../models/Data')
-const Chart = require('chart.js');
-const canvas = document.getElementById('dataChartTest');
-const ctxx = canvas.getContext('2d');
 
-const data = Data.findAll({
-  attributes: ['purchase_name', 'cost']
-});
+function createChart(data) {
+  const labels = data.map((item) => item.category);
+  const values = data.map((item) => item.total);
+  const canvas = document.getElementById('myTransactionChart');
+  const ctx = canvas.getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'My Chart',
+          data: values,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
 
-const chartData = {
-  labels: data.map(d => d.purchase_name),
-  datasets: [
-    {
-      label: 'Values',
-      data: data.map(d => d.cost),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    }
-  ]
-};
+async function fetchChartData() {
+  const response = await fetch('/chart-data');
+  console.log(response);
+  const data = await response.json();
+  createChart(data);
+}
 
-const myChart = new Chart(ctxx, {
-  type: 'pie',
-  data: chartData
-});
+// Call the function to fetch the data and create the chart
+fetchChartData();

@@ -1,4 +1,6 @@
-const { Data } = require('../../models/Data')
+const { Data } = require('../../models');
+const router = require('express').Router();
+const sequelize = require('sequelize')
 
 const getDataForSpendingChart = async (userId) => {
     try {
@@ -13,7 +15,7 @@ const getDataForSpendingChart = async (userId) => {
     }
   };
 
-  router.get('/chart-data', withAuth, async (req, res) => {
+  router.get('/chart-data', async (req, res) => {
     try {
       const data = await getDataForSpendingChart(req.session.user_id);
       res.json(data);
