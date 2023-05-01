@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      // include: ["data"],
-    });
-    res.render('dashboard', { userData });
-  } catch (err) {
-    res.status(400).json(err);
-  }  
-});
+// router.get('/', async (req, res) => {
+//   try {
+//     const userData = await User.findAll({
+//       // include: ["data"],
+//     });
+//     res.render('dashboard', { userData });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }  
+// });
 
 
 router.post('/', async (req, res) => {
@@ -65,22 +65,22 @@ router.post('/login', async (req, res) => {
 });
 
 
-router.put('/:id', async (req, res) => {
-  try {
-    const userData = await User.update(req.body, {
-      where: {
-        id: req.params.id,
-      }
-    });
-    if (!userData[0]) {
-      res.status(404).json({ message: 'No user found!' });
-      return;
-    }
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const userData = await User.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       }
+//     });
+//     if (!userData[0]) {
+//       res.status(404).json({ message: 'No user found!' });
+//       return;
+//     }
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 
 router.post('/logout', (req, res) => {
@@ -93,19 +93,19 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  try {
-    const userData = await User.destroy({
-      where: { id: req.params.id, }
-    });
-    if (!categoryData) {
-      res.status(404).json({ message: 'No User with this credentials!' });
-      return;
-    }
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.delete('/:id', async (req, res) => {
+//   try {
+//     const userData = await User.destroy({
+//       where: { id: req.params.id, }
+//     });
+//     if (!categoryData) {
+//       res.status(404).json({ message: 'No User with this credentials!' });
+//       return;
+//     }
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;
