@@ -27,7 +27,7 @@ Spending.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'data',
+        modelName: 'spending',
     }
 )
 
