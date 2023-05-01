@@ -34,41 +34,41 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
-  try {
-    const userInputData = await Data.update(req.body, {
-      where: {
-        id: req.params.id,
-      }
-    });
-    if (!userInputData[0]) {
-      res.status(404).json({ message: 'No data found!' });
-      return;
-    }
-    res.status(200).json(userInputData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const userInputData = await Data.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       }
+//     });
+//     if (!userInputData[0]) {
+//       res.status(404).json({ message: 'No data found!' });
+//       return;
+//     }
+//     res.status(200).json(userInputData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const userInputData = await Data.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
+// router.delete('/:id', withAuth, async (req, res) => {
+//   try {
+//     const userInputData = await Data.destroy({
+//       where: {
+//         id: req.params.id,
+//         user_id: req.session.user_id,
+//       },
+//     });
 
-    if (!userInputData) {
-      res.status(404).json({ message: 'Please check data id!' });
-      return;
-    }
+//     if (!userInputData) {
+//       res.status(404).json({ message: 'Please check data id!' });
+//       return;
+//     }
 
-    res.status(200).json(userInputData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+//     res.status(200).json(userInputData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;
