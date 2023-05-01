@@ -24,7 +24,12 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers }); // Update this line to use helpers object
+const hbs = exphbs.create({ helpers:  {
+  json: function (context) {
+  return JSON.stringify(context);
+      },
+    },
+  }); // Update this line to use helpers object
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

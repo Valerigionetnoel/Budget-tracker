@@ -206,8 +206,11 @@
       </div>
   </div>
 </div>
-  <script type="module" src="../charts/auto/topSpendingChart.js"></script>
   <script src="/js/dashboard.js"></script>
   <script src="/js/logout.js"></script>
   <script src="/dist/flowbite.min.js"></script>
   <script src="/js/budget.js"></script>
+<script>
+  const dataForSpendingChart = {{{json dataForSpendingChart}}};
+  createChart(dataForSpendingChart);
+</script>
