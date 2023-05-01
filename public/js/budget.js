@@ -1,3 +1,5 @@
+
+
 const newBudgetFormHandler = async (event) => {
     event.preventDefault();
   
@@ -15,13 +17,12 @@ const newBudgetFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard');
+        location.reload();
       } else {
         alert('Failed to create budget');
       }
     }
   };
   
-  document
-    .querySelector('#budgetCreationModal')
-    .addEventListener('submit', newBudgetFormHandler);
+  document.querySelector('#budgetCreationModal').addEventListener('submit', newBudgetFormHandler);
+  document.querySelector('#budgetCreationbtn').addEventListener('click', newBudgetFormHandler);
