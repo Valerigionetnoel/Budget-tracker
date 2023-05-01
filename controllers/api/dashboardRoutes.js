@@ -27,7 +27,7 @@ router.get('/dashboard', async (req, res) => {
     }
 
     console.log(`Data for user ID ${req.session.user_id}:`, inputData);
-    res.render('dashboard', { inputData, userData: userDataJSON, loggedIn, userBudget: userBudgetJSON});
+    res.render('dashboard', { inputData, userData: userDataJSON, loggedIn, userBudget: userBudgetJSON });
   } catch (err) {
     res.status(400).json(err);
   }  

@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const chartDataRoutes = require('./controllers/api/chartRoutes');
 
 const sequelize = require('./config/connection');
 
@@ -24,7 +25,12 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers }); // Update this line to use helpers object
+const hbs = exphbs.create({ helpers:  {
+  json: function (context) {
+  return JSON.stringify(context);
+      },
+    },
+  }); // Update this line to use helpers object
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -32,6 +38,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(chartDataRoutes);
 
 app.use(routes);
 
