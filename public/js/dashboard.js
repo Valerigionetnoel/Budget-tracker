@@ -52,20 +52,15 @@ const newTransactionFormHandler = async (event) => {
     event.preventDefault();
 
     const company = document.querySelector('#companyName').value.trim();
-    const amount = document.querySelector('#amountPurchase').value.trim();
+    const cost = document.querySelector('#amountPurchase').value.trim();
     const category = document.querySelector('#categoryOfPurchase').value.trim();
-    const notes = document.querySelector('#purchaseNote').value.trim();
+    const note = document.querySelector('#purchaseNote').value.trim();
     const emotion = document.querySelector('#emotionalPurchase').value.trim();
 
-    if (company && amount && category && notes && emotion) {
+    if (company && cost && category && note && emotion) {
       const response = await fetch(`/api/data`, {
         method: 'POST',
-        body: JSON.stringify ({ purchase_name,
-          cost,
-          category,
-          note,
-          emotion 
-        }),
+        body: JSON.stringify ({ company, cost, category, note, emotion, }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -76,7 +71,6 @@ const newTransactionFormHandler = async (event) => {
         const tableBody = document.querySelector('#transaction-list tbody');
         const newRow = createTransactionTableRow(transaction);
         tableBody.appendChild(newRow);
-        document.location.replace('/data');
       } else {
             alert('Failed to create project');
           }
@@ -99,5 +93,7 @@ const delTransaction= async (event) => {
   };
 
   document.querySelector('#transactionModal').addEventListener('submit', newTransactionFormHandler);
+  
+  document.querySelector('#transactionModalBtn').addEventListener('click', newTransactionFormHandler);
 
   document.querySelector('#transaction-list').addEventListener('click', delTransaction);

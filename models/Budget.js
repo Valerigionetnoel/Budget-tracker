@@ -5,8 +5,16 @@ class Budget extends Model {}
 
 Budget.init(
     {
-        month: {
-            type: DataTypes.STRING,
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        }, 
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull:false,
+            defaultValue: DataTypes.NOW,
         },
         income: {
             type: DataTypes.FLOAT,
@@ -23,7 +31,14 @@ Budget.init(
         desiredBudget: {
             type: DataTypes.FLOAT,
             allowNull: false,
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
+    },
     },
     {
         sequelize,

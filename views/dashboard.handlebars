@@ -19,8 +19,13 @@
       <h2 class=" md:hidden max-w-md text-4xl font-bold text-center md:text-5xl md:self-end md:mt-10">
         Budget
       </h2>
-      <div class="w-80 lg:w-96 self-center">
+      {{#if userBudget}}
+      <div id="budgetContainer" class="w-80 lg:w-96 self-center">
         <!-- add rendering for the chart-->
+        <h2>Your budget for the month is: {{userBudget.desiredBudget}}</h2>
+        <canvas id="otherChart"></canvas>
+    </div>
+      {{/if}}
       <canvas id="otherChart"></canvas>
       </div>
       <h2 class="xsm:invisible md:visible  max-w-md text-4xl font-bold text-center md:text-5xl self-end sm:mt-0 md:mt-10">
@@ -67,16 +72,16 @@
     </thead>
     <!-- Render the table data -->
     <tbody class="divide-y divide-gray-100">
-  {{#each transactionData }}
+  {{#each inputData}}
   <tr class="bg-gray-50">
     <td class="user-cell whitespace-nowrap">
-      {{this.user_id}}
+      {{this.id}}
     </td>
     <td class="date-cell whitespace-nowrap">
-      {{this.createdAt}}
+      {{this.date_created}}
     </td>
     <td class="company-cell whitespace-nowrap">
-      {{this.purchase_name}}
+      {{this.company}}
     </td>
     <td class="amount-cell whitespace-nowrap">
       {{this.cost}}
@@ -91,7 +96,7 @@
       {{this.emotion}}
     </td>
     <td class="button-cell whitespace-nowrap">
-      <button>Delete</button>
+      <button id="deleteTransactionbtn" class=" flex p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">Delete</button>
     </td>
   </tr>
   {{/each}}
@@ -118,14 +123,14 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-              <div id="companyName">
+              <div>
                 <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company name</label>
-                <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input type="text" id="companyName"class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               </div>
 
-            <div id="amountPurchase">
+            <div>
               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
-              <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <input type="text" id="amountPurchase" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a category</label>
               <select id="categoryOfPurchase" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -138,15 +143,15 @@
                 <option value="Other">Other</option>
               </select>
 
-            <div id="emotionalPurchase">
+            <div>
               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What Emotion did you feel?
               </label>
-              <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <input type="text" id="emotionalPurchase" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
 
-        <div id="purchaseNote">
+        <div >
           <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Any Notes</label>
-          <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <input type="text" id="purchaseNote" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       </div>
 
 <!-- Dropdown menu -->
@@ -154,7 +159,7 @@
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="transactionModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Transaction</button>
+                <button data-modal-hide="transactionModal" id="transactionModalBtn" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Transaction</button>
                 <button data-modal-hide="transactionModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Start Again</button>
             </div>
         </div>
@@ -177,25 +182,25 @@
           </div>
           <!-- Modal body -->
           <div class="p-6 space-y-6">
-            <div id="income">
+            <div>
               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What is your Income</label>
-              <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <input type="text" id="income" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
 
-          <div id="savings">
+          <div>
             <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What do your Savings look like?</label>
-            <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input type="text" id="savings" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
 
-      <div id="desiredBudget">
+      <div>
         <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What is your desired Budget for the month?</label>
-        <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="text" id="desiredBudget" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     </div>
     
           </div>
           <!-- Modal footer -->
           <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button data-modal-hide="budgetCreationModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Budget</button>
+              <button data-modal-hide="budgetCreationModal" id="budgetCreationbtn" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Budget</button>
               <button data-modal-hide="budgetCreationModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Start Again</button>
           </div>
       </div>
@@ -205,3 +210,4 @@
   <script src="/js/dashboard.js"></script>
   <script src="/js/logout.js"></script>
   <script src="/dist/flowbite.min.js"></script>
+  <script src="/js/budget.js"></script>

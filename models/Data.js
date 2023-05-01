@@ -19,7 +19,12 @@ Data.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        purchase_name: {
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull:false,
+            defaultValue: DataTypes.NOW,
+        },
+        company: {
             type: DataTypes.STRING,
             allowNull: false,
         },
