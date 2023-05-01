@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
       raw: true, // Return plain objects instead of Sequelize model instances
     });
 
-    res.render('homepage', { inputData });
+    res.render('dashboard', { inputData });
   } catch (err) {
     res.status(400).json(err);
   }  
@@ -26,6 +26,23 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
+    res.status(200).json(userInputData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const userInputData = await Data.update(req.body, {
+      where: {
+        id: req.params.id,
+      }
+    });
+    if (!userInputData[0]) {
+      res.status(404).json({ message: 'No data found!' });
+      return;
+    }
     res.status(200).json(userInputData);
   } catch (err) {
     res.status(400).json(err);
