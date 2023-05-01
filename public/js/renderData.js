@@ -1,4 +1,4 @@
-const Data = require('./models/Data')
+const Data = require('../../models/Data')
 const Chart = require('chart.js');
 const canvas = document.getElementById('dataChartTest');
 const ctxx = canvas.getContext('2d');
