@@ -32,6 +32,23 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  try {
+    const userInputData = await Data.update(req.body, {
+      where: {
+        id: req.params.id,
+      }
+    });
+    if (!userInputData[0]) {
+      res.status(404).json({ message: 'No data found!' });
+      return;
+    }
+    res.status(200).json(userInputData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const userInputData = await Data.destroy({

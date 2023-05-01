@@ -4,9 +4,9 @@ const { User } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
-      include: ["data"],
+      // include: ["data"],
     });
-    res.render('homepage', { userData });
+    res.render('dashboard', { userData });
   } catch (err) {
     res.status(400).json(err);
   }  
@@ -86,10 +86,10 @@ router.put('/:id', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).send("Logout").end();
     });
   } else {
-    res.status(404).send("Logout success!").end();
+    res.status(404).send("Logout successfull!").end();
   }
 });
 
