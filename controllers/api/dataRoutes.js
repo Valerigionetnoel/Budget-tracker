@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
       raw: true, // Return plain objects instead of Sequelize model instances
     });
 
-    res.render('homepage', { inputData });
+    res.render('dashboard', { inputData });
   } catch (err) {
     res.status(400).json(err);
   }  
