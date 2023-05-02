@@ -5,6 +5,8 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const chartDataRoutes = require('./controllers/api/chartRoutes');
+const budgetChartDataRoute = require('./controllers/api/budgetChartRoute');
+const formattedDateRoute = require('./controllers/api/formatDate');
 
 const sequelize = require('./config/connection');
 
@@ -39,6 +41,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(chartDataRoutes);
+app.use(budgetChartDataRoute);
+app.use(formattedDateRoute);
 
 app.use(routes);
 
