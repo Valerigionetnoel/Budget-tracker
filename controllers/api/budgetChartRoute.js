@@ -7,14 +7,16 @@ const getDataForBudgetChart = async (userId) => {
       const data = await Data.findAll({
         where: { user_id: userId },
         attributes: ['cost', [sequelize.fn('sum', sequelize.col('cost')), 'total']],
+        group: ['cost']
       });
 
       const userBudget = await Budget.findOne({
         where: {user_id: userId}, 
-        attributes:  ['desiredBudget']
+        attributes:  ['desiredBudget'],
+        group: ['desiredBudget']
       })
 
-      return { data , userBudget: userBudget ? desiredBudget: 0}
+      return { data , userBudget: userBudget ? userBudget.desiredBudget: 0}
     } catch (err) {
       console.log(err);
     }
