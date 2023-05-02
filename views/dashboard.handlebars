@@ -96,7 +96,7 @@
       {{this.emotion}}
     </td>
     <td class="button-cell whitespace-nowrap">
-      <button id="deleteTransactionbtn" class=" flex p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">Delete</button>
+     <button class="deleteTransactionBtn flex p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600" data_id="{{this.id}}">Delete</button>
     </td>
   </tr>
   {{/each}}
@@ -206,6 +206,7 @@
       </div>
   </div>
 </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="/js/dashboard.js"></script>
   <script src="/js/logout.js"></script>
   <script src="/dist/flowbite.min.js"></script>
@@ -213,3 +214,4 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="/js/renderData.js"></script>
   <script src="/js/budgetChart.js"></script>
+  <scrip src="/js/fetchDateFormat.js"></script>

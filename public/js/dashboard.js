@@ -8,7 +8,7 @@ function createTransactionTableRow(transaction) {
 
   const createdAtCell = document.createElement('td');
   createdAtCell.classList.add('date-cell', 'whitespace-nowrap');
-  createdAtCell.textContent = transaction.createdAt;
+  createdAtCell.textContent = moment(transaction.createdAt).format('ddd MMM DD');
 
   const companyNameCell = document.createElement('td');
   companyNameCell.classList.add('company-cell', 'whitespace-nowrap');
@@ -71,12 +71,14 @@ const newTransactionFormHandler = async (event) => {
         const tableBody = document.querySelector('#transaction-list tbody');
         const newRow = createTransactionTableRow(transaction);
         tableBody.appendChild(newRow);
+        location.reload();
       } else {
             alert('Failed to create project');
           }
 }};    
 
 const delTransaction= async (event) => {
+  event.preventDefault();
     if (event.target.hasAttribute('data_id')) {
       const id = event.target.getAttribute('data_id');
   
@@ -85,7 +87,9 @@ const delTransaction= async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/data');
+        const parentRow = event.target.closest('tr');
+        parentRow.remove();
+        location.reload();
       } else {
         alert('Failed to delete project');
       }
@@ -96,4 +100,6 @@ const delTransaction= async (event) => {
   
   document.querySelector('#transactionModalBtn').addEventListener('click', newTransactionFormHandler);
 
-  document.querySelector('#transaction-list').addEventListener('click', delTransaction);
+const deleteButtons = document.querySelectorAll('.deleteTransactionBtn');
+
+deleteButtons.forEach((button) => button.addEventListener('click', delTransaction));
