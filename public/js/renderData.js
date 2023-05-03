@@ -12,7 +12,14 @@ function createChart(data) {
         {
           label: 'My Chart',
           data: values,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          backgroundColor:  [
+            'lightGreen',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(245, 40, 145, 0.8)',
+            'rgba(39, 245, 221, 0.8)',
+            'rgba(245, 238, 39, 0.8)',
+            'rgba(202, 136, 47, 0.8)',
+          ],
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
         },
