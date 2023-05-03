@@ -1,0 +1,37 @@
+[
+  {
+    "date_created": "05/01/2023",
+    "income": "1100",
+    "savings": "400",
+    "desiredBudget": "600",
+    "user_id": 1
+  },
+  {
+    "date_created": "04/01/2023",
+    "income": "800",
+    "savings": "300",
+    "desiredBudget": "700",
+    "user_id": 1
+  },
+  {
+    "date_created": "03/01/2023",
+    "income": "700",
+    "savings": "200",
+    "desiredBudget": "400",
+    "user_id": 1
+  },
+  {
+    "date_created": "02/25/2023",
+    "income": "900",
+    "savings": "700",
+    "desiredBudget": "500",
+    "user_id": 1
+  },
+  {
+    "date_created": "01/01/2023",
+    "income": "600",
+    "savings": "100",
+    "desiredBudget": "500",
+    "user_id": 1
+  }
+]

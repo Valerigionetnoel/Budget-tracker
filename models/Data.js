@@ -19,6 +19,10 @@ Data.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        product: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         date_created: {
             type: DataTypes.DATE,
             allowNull:false,

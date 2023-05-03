@@ -23,6 +23,8 @@ const newBudgetFormHandler = async (event) => {
       }
     }
   };
+
+  
   
   document.querySelector('#budgetCreationModal').addEventListener('submit', newBudgetFormHandler);
   document.querySelector('#budgetCreationbtn').addEventListener('click', newBudgetFormHandler);

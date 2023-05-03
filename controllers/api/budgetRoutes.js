@@ -24,7 +24,7 @@ const withAuth = require('../../utils/auth');
 //       })
 // });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   console.log('Request body:', req.body);
   try {
     const userBudget = await Budget.create({
@@ -56,24 +56,23 @@ router.post('/', async (req, res) => {
 //   }
 // });
 
-// router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const budgetData = await Budget.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const budgetData = await Budget.destroy({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
 
-//     if (!budgetData) {
-//       res.status(404).json({ message: 'No budget data found with this id!' });
-//       return;
-//     }
+    if (!budgetData) {
+      res.status(404).json({ message: 'No budget data found with this id!' });
+      return;
+    }
 
-//     res.status(200).json(projectData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(projectData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
