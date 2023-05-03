@@ -1052,6 +1052,14 @@ input[type="range"]::-ms-fill-lower {
   margin-left: auto;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -1209,6 +1217,10 @@ input[type="range"]::-ms-fill-lower {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-items-stretch {
+  justify-items: stretch;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1468,6 +1480,10 @@ input[type="range"]::-ms-fill-lower {
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-large {
+  font-weight: 750;
 }
 
 .font-semibold {
