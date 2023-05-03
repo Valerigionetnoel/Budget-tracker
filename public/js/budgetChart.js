@@ -20,6 +20,7 @@ function createBudgetChart(data) {
             ],
             backgroundColor: [
               'Red',
+              'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
             ],
             borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
@@ -48,8 +49,9 @@ function createBudgetChart(data) {
               transactionData,
             ],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
               'lightGreen',
+              'rgba(255, 99, 132, 0.2)',
+              
             ],
             borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
             borderWidth: 1,
