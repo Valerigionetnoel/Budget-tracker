@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  // Check if the user is already logged in
+  // Checks if user is logged in, if so redirecst to the dashboard
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;

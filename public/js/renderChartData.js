@@ -1,6 +1,6 @@
 
 
-
+// renders the category transactions data to show user which category is the biggest in transactions
 function createChart(data) {
   const labels = data.map((item) => item.category);
   const values = data.map((item) => item.total);

@@ -2,6 +2,7 @@ const { Data, Budget } = require('../../models');
 const router = require('express').Router();
 const sequelize = require('sequelize')
 
+// get data and query it for budget chart
 const getDataForBudgetChart = async (userId) => {
     try {
       const data = await Data.findAll({
@@ -22,6 +23,7 @@ const getDataForBudgetChart = async (userId) => {
     }
   };
 
+// get data to render the budget charts
   router.get('/budget-chart-data', async (req, res) => {
     try {
       const data = await getDataForBudgetChart(req.session.user_id);

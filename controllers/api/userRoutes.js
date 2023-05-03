@@ -1,18 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       // include: ["data"],
-//     });
-//     res.render('dashboard', { userData });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }  
-// });
-
-
+// used to sign up a user
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create({
@@ -32,6 +21,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// used to sign in a user
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -64,25 +54,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
-// router.put('/:id', async (req, res) => {
-//   try {
-//     const userData = await User.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       }
-//     });
-//     if (!userData[0]) {
-//       res.status(404).json({ message: 'No user found!' });
-//       return;
-//     }
-//     res.status(200).json(userData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-
+// used to destory the current session and log out
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -92,20 +64,5 @@ router.post('/logout', (req, res) => {
     res.status(404).send("Logout successfull!").end();
   }
 });
-
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const userData = await User.destroy({
-//       where: { id: req.params.id, }
-//     });
-//     if (!categoryData) {
-//       res.status(404).json({ message: 'No User with this credentials!' });
-//       return;
-//     }
-//     res.status(200).json(userData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
 
 module.exports = router;
