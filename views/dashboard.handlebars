@@ -8,7 +8,7 @@
       <h2 class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left md:self-start">
         Hello User
       </h2>
-        <div class="top-10 w-80 lg:mx-auto self-center">
+        <div class="top-10 w-80 h-60 lg:mx-auto self-center">
             <!-- add rendering for the chart-->
           <canvas id="myTransactionChart"></canvas>
         </div>
@@ -27,12 +27,12 @@
         <canvas id="otherChart"></canvas>
         </div>
     </div>
-      {{/if}}
-      <canvas id="otherChart"></canvas>
-      </div>
+      {{/if}} 
       <h2 class="xsm:invisible md:visible  max-w-md text-4xl font-bold text-center md:text-5xl self-end sm:mt-0 md:mt-10">
-        Budget
+        Budget hello 
       </h2>
+      </div>
+     
     </div>
 
     </div>
@@ -64,45 +64,47 @@
     <thead class="bg-gray-50 border-b-2 border-gray-200">
       <tr>
         <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Transaction Number</th>
-        <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Date</th>
         <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Product</th>
+        <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Date</th>
         <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Company</th>
         <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Amount</th>
         <th class="w-12 p-3 text-sm font-semibold tracking-wide text-left">Category</th>
         <th class="p-3 text-sm font-semibold tracking-wide text-left">Note</th>
         <th class="w-9 p-3 text-sm font-semibold tracking-wide text-left">Emotion</th>
+        <th class="w-9 p-3 text-sm font-semibold tracking-wide text-left">Delete Transaction</th>
       </tr>
     </thead>
     <!-- Render the table data -->
     <tbody class="divide-y divide-gray-100">
   {{#each inputData}}
   <tr class="bg-gray-50">
-    <td class="user-cell whitespace-nowrap">
+    <td class="user-cell p-3 whitespace-nowrap items-center">
       {{this.id}}
     </td>
-    <td class="date-cell whitespace-nowrap">
-      {{this.date_created}}
-    </td>
-    <td class="product-cell whitespace-nowrap">
+    <td class="product-cell p-3 whitespace-nowrap">
       {{this.product}}
     </td>
-    <td class="company-cell whitespace-nowrap">
+    <td class="date-cell p-3 whitespace-nowrap">
+      {{ formatDate this.date_created}}
+    </td>
+    
+    <td class="company-cell p-3 whitespace-nowrap">
       {{this.company}}
     </td>
-    <td class="amount-cell whitespace-nowrap">
+    <td class="amount-cell p-3 whitespace-nowrap">
       {{this.cost}}
     </td>
-    <td class="category-cell whitespace-nowrap">
+    <td class="category-cell p-3 whitespace-nowrap">
       {{this.category}}
     </td>
-    <td class="notes-cell whitespace-nowrap">
+    <td class="notes-cell p-3 whitespace-nowrap">
       {{this.note}}
     </td>
-    <td class="emotion-cell whitespace-nowrap">
+    <td class="emotion-cell p-3 whitespace-nowrap">
       {{this.emotion}}
     </td>
     <td class="button-cell whitespace-nowrap">
-     <button class="deleteTransactionBtn flex p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600" data_id="{{this.id}}">Delete</button>
+     <button class="deleteTransactionBtn flex p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 font-bold" data_id="{{this.id}}">Delete</button>
     </td>
   </tr>
   {{/each}}
