@@ -1,4 +1,5 @@
 function createTransactionTableRow(transaction) {
+
   const row = document.createElement('tr');
   row.classList.add('bg-gray-50');
 
@@ -8,7 +9,7 @@ function createTransactionTableRow(transaction) {
 
   const createdAtCell = document.createElement('td');
   createdAtCell.classList.add('date-cell', 'whitespace-nowrap');
-  createdAtCell.textContent = moment(transaction.date_created).format('ddd MMM D');
+  createdAtCell.textContent = moment(transaction.createdAt).format('ddd MMM DD');
 
   const productCell = document.createElement('td');
   productCell.classList.add('product-cell', 'whitespace-nowrap');
@@ -66,7 +67,7 @@ const newTransactionFormHandler = async (event) => {
     if (product && company && cost && category && note && emotion) {
       const response = await fetch(`/api/data`, {
         method: 'POST',
-        body: JSON.stringify ({ product , company, cost, category, note, emotion, }),
+        body: JSON.stringify ({ product, company, cost, category, note, emotion, }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -77,7 +78,7 @@ const newTransactionFormHandler = async (event) => {
         const tableBody = document.querySelector('#transaction-list tbody');
         const newRow = createTransactionTableRow(transaction);
         tableBody.appendChild(newRow);
-        location.reload();
+        location.reload()
       } else {
             alert('Failed to create project');
           }

@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Data } = require('../models');
+const { User, Data, Budget } = require('../models');
 
 const userData = require('./user.json');
-const dataData = require('./data.json')
+const dataData = require('./data.json');
+const budgetData = require('./budget.json');
 
 const seedDataBase = async () => {
     await sequelize.sync({force: true});
@@ -15,6 +16,11 @@ const seedDataBase = async () => {
     });
 
     const data = await Data.bulkCreate(dataData, {
+        individualHooks: true,
+        returning: true,
+    });
+
+    const budget = await Budget.bulkCreate(budgetData, {
         individualHooks: true,
         returning: true,
     });
