@@ -78,7 +78,6 @@ const newTransactionFormHandler = async (event) => {
         const tableBody = document.querySelector('#transaction-list tbody');
         const newRow = createTransactionTableRow(transaction);
         tableBody.appendChild(newRow);
-        location.reload()
       } else {
             alert('Failed to create project');
           }
