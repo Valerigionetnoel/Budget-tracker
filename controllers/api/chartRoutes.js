@@ -2,6 +2,7 @@ const { Data } = require('../../models');
 const router = require('express').Router();
 const sequelize = require('sequelize')
 
+//gets data and queries it for the chart
 const getDataForSpendingChart = async (userId) => {
     try {
       const data = await Data.findAll({

@@ -2,7 +2,7 @@ function createBudgetChart(data) {
   const transactionData = data.data.reduce((sum, item) => sum + item.total, 0)
   const remainingBudget = data.userBudget - transactionData;
   const canvas = document.getElementById('otherChart');
-  console.log('Canvas:', canvas);
+  
   const ctx = canvas.getContext('2d');
   if (data.userBudget < transactionData) {
     const chart = new Chart(ctx, {
@@ -76,6 +76,5 @@ async function fetchBudgetChartData() {
 }
 
 
-window.addEventListener('DOMContentLoaded', () => {
     fetchBudgetChartData();
-  });
+

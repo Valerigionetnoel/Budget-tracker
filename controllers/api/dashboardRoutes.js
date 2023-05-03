@@ -3,13 +3,12 @@ const { Data, User, Budget } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/dashboard', async (req, res) => {
-  console.log('hello')
   try {
     const inputData = await Data.findAll({
       where: {
-        user_id: req.session.user_id, // Only fetch data for the logged-in user
+        user_id: req.session.user_id, // Only fetches the data for the logged-in user
       },
-      raw: true, // Return plain objects instead of Sequelize model instances
+      raw: true, // Returns plain objects instead of Sequelize model instances
     });
 
     const userData = await User.findByPk(req.session.user_id);

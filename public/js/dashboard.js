@@ -1,5 +1,5 @@
 function createTransactionTableRow(transaction) {
-
+  //appends to the table so the window is updated without the need of a reload
   const row = document.createElement('tr');
   row.classList.add('bg-gray-50');
 
@@ -54,6 +54,7 @@ function createTransactionTableRow(transaction) {
   return row;
 }
 
+//creates a new transaction for the user from the modal
 const newTransactionFormHandler = async (event) => {
     event.preventDefault();
 
@@ -84,6 +85,7 @@ const newTransactionFormHandler = async (event) => {
           }
 }};    
 
+// deletes a transaction by pressing the delete button
 const delTransaction= async (event) => {
   event.preventDefault();
     if (event.target.hasAttribute('data_id')) {

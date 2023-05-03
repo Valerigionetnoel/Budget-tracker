@@ -6,7 +6,6 @@ const routes = require('./controllers');
 const helpers = require('./utils/formatDate.js');
 const chartDataRoutes = require('./controllers/api/chartRoutes');
 const budgetChartDataRoute = require('./controllers/api/budgetChartRoute');
-const formattedDateRoute = require('./controllers/api/formatDate');
 
 const sequelize = require('./config/connection');
 
@@ -32,7 +31,7 @@ const hbs = exphbs.create({ helpers:  {
   return JSON.stringify(context);
       },
     },
-  }); // Update this line to use helpers object
+  });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -42,7 +41,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(chartDataRoutes);
 app.use(budgetChartDataRoute);
-app.use(formattedDateRoute);
 
 app.use(routes);
 

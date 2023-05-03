@@ -20,10 +20,6 @@ Budget.init(
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        //expenses: {
-            //type: DataTypes.FLOAT,
-            //allowNull: false,
-        //},
         savings: {
             type: DataTypes.FLOAT,
             allowNull: false,
