@@ -36,7 +36,7 @@ function createTransactionTableRow(transaction) {
   emotionCell.textContent = transaction.emotion;
 
   const buttonCell = document.createElement('td');
-  buttonCell.classList.add('button-cell', 'whitespace-nowrap', 'p-6', 'space-x-2', 'border-t', 'border-gray-200', 'rounded-b', 'dark:border-gray-600', 'font-bold');
+  buttonCell.classList.add('deleteTransactionBtn', 'whitespace-nowrap', 'p-6', 'space-x-2', 'border-t', 'border-gray-200', 'rounded-b', 'dark:border-gray-600', 'font-bold');
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   buttonCell.appendChild(deleteButton);
@@ -78,6 +78,7 @@ const newTransactionFormHandler = async (event) => {
         const tableBody = document.querySelector('#transaction-list tbody');
         const newRow = createTransactionTableRow(transaction);
         tableBody.appendChild(newRow);
+        location.reload();
       } else {
             alert('Failed to create project');
           }
