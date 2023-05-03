@@ -1,4 +1,6 @@
 
+
+
 function createChart(data) {
   const labels = data.map((item) => item.category);
   const values = data.map((item) => item.total);
@@ -10,10 +12,10 @@ function createChart(data) {
       labels: labels,
       datasets: [
         {
-          label: 'My Chart',
+          label: 'Category Spending',
           data: values,
           backgroundColor:  [
-            'lightGreen',
+            'red',
             'rgba(255, 99, 132, 0.2)',
             'rgba(245, 40, 145, 0.8)',
             'rgba(39, 245, 221, 0.8)',

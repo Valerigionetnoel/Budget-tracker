@@ -1,42 +1,48 @@
 function createTransactionTableRow(transaction) {
+
   const row = document.createElement('tr');
   row.classList.add('bg-gray-50');
 
   const userIdCell = document.createElement('td');
-  userIdCell.classList.add('user-cell', 'whitespace-nowrap');
+  userIdCell.classList.add('user-cell', 'whitespace-nowrap', 'p-3');
   userIdCell.textContent = transaction.user_id;
 
   const createdAtCell = document.createElement('td');
-  createdAtCell.classList.add('date-cell', 'whitespace-nowrap');
+  createdAtCell.classList.add('date-cell', 'whitespace-nowrap', 'p-3');
   createdAtCell.textContent = moment(transaction.createdAt).format('ddd MMM DD');
 
+  const productCell = document.createElement('td');
+  productCell.classList.add('product-cell', 'whitespace-nowrap', 'p-3');
+  productCell.textContent = transaction.product;
+
   const companyNameCell = document.createElement('td');
-  companyNameCell.classList.add('company-cell', 'whitespace-nowrap');
+  companyNameCell.classList.add('company-cell', 'whitespace-nowrap', 'p-3');
   companyNameCell.textContent = transaction.purchase_name;
 
   const costCell = document.createElement('td');
-  costCell.classList.add('amount-cell', 'whitespace-nowrap');
+  costCell.classList.add('amount-cell', 'whitespace-nowrap', 'p-3');
   costCell.textContent = transaction.cost;
 
   const categoryCell = document.createElement('td');
-  categoryCell.classList.add('category-cell', 'whitespace-nowrap');
+  categoryCell.classList.add('category-cell', 'whitespace-nowrap', 'p-3');
   categoryCell.textContent = transaction.category;
 
   const noteCell = document.createElement('td');
-  noteCell.classList.add('notes-cell', 'whitespace-nowrap');
+  noteCell.classList.add('notes-cell', 'whitespace-nowrap', 'p-3');
   noteCell.textContent = transaction.note;
 
   const emotionCell = document.createElement('td');
-  emotionCell.classList.add('emotion-cell', 'whitespace-nowrap');
+  emotionCell.classList.add('emotion-cell', 'whitespace-nowrap', 'p-3');
   emotionCell.textContent = transaction.emotion;
 
   const buttonCell = document.createElement('td');
-  buttonCell.classList.add('button-cell', 'whitespace-nowrap');
+  buttonCell.classList.add('deleteTransactionBtn', 'whitespace-nowrap', 'p-6', 'space-x-2', 'border-t', 'border-gray-200', 'rounded-b', 'dark:border-gray-600', 'font-bold');
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   buttonCell.appendChild(deleteButton);
-
+  
   row.appendChild(userIdCell);
+  row.appendChild(productCell);
   row.appendChild(createdAtCell);
   row.appendChild(companyNameCell);
   row.appendChild(costCell);
@@ -51,16 +57,17 @@ function createTransactionTableRow(transaction) {
 const newTransactionFormHandler = async (event) => {
     event.preventDefault();
 
-    const company = document.querySelector('#companyName').value.trim();
+    const product = document.querySelector('#productName').value.trim();
+    const company = document.querySelector('#companyName').value.trim();  
     const cost = document.querySelector('#amountPurchase').value.trim();
     const category = document.querySelector('#categoryOfPurchase').value.trim();
     const note = document.querySelector('#purchaseNote').value.trim();
     const emotion = document.querySelector('#emotionalPurchase').value.trim();
 
-    if (company && cost && category && note && emotion) {
+    if (product && company && cost && category && note && emotion) {
       const response = await fetch(`/api/data`, {
         method: 'POST',
-        body: JSON.stringify ({ company, cost, category, note, emotion, }),
+        body: JSON.stringify ({ product, company, cost, category, note, emotion, }),
         headers: {
           'Content-Type': 'application/json'
         }
