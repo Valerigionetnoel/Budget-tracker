@@ -8,7 +8,7 @@ router.get('/api/data', async (req, res) => {
     try {
         const transactionDate = await Data.findAll();
 
-        const formattedTransactionDate = transactionDate.map((transaction) => {
+        const formattedTransactions = transactionDate.map((transaction) => {
             const formattedDate = moment(transaction.date_created).format('ddd MMM DD'); 
             return {
             ...transaction.toJSON(),

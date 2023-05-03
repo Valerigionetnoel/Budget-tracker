@@ -23,7 +23,9 @@
       <div id="budgetContainer" class="w-80 lg:w-96 self-center">
         <!-- add rendering for the chart-->
         <h2>Your budget for the month is: {{userBudget.desiredBudget}}</h2>
+        <div id="budgetChartContainer" class="w-80">
         <canvas id="otherChart"></canvas>
+        </div>
     </div>
       {{/if}}
       <canvas id="otherChart"></canvas>
@@ -61,9 +63,10 @@
   <table class="w-full">
     <thead class="bg-gray-50 border-b-2 border-gray-200">
       <tr>
-        <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">User</th>
-        <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Date</th>
-        <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Name</th>
+        <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Transaction Number</th>
+        <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Date</th>
+        <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Product</th>
+        <th class="w-10 p-3 text-sm font-semibold tracking-wide text-left">Company</th>
         <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Amount</th>
         <th class="w-12 p-3 text-sm font-semibold tracking-wide text-left">Category</th>
         <th class="p-3 text-sm font-semibold tracking-wide text-left">Note</th>
@@ -77,11 +80,11 @@
     <td class="user-cell whitespace-nowrap">
       {{this.id}}
     </td>
-    <td class="product-cell whitespace-nowrap">
-      {{this.product}}
-    </td>
     <td class="date-cell whitespace-nowrap">
       {{this.date_created}}
+    </td>
+    <td class="product-cell whitespace-nowrap">
+      {{this.product}}
     </td>
     <td class="company-cell whitespace-nowrap">
       {{this.company}}
@@ -128,7 +131,7 @@
             <div class="p-6 space-y-6">
 
               <div>
-                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company name</label>
+                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What did you buy?</label>
                 <input type="text" id="productName" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               </div>
 
